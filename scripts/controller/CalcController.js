@@ -27,15 +27,32 @@ initialize(){
 
 }
 
+addEventListenerALL(element, events, fn){
+
+events.split(' ').forEach(event => {
+
+ element.addEventListener(event, fn, false);
+
+});
+
+}
+
 initButtonsEvents(){
 
 let buttons = document.querySelectorAll("#buttons > g, #parts > g")
 
 buttons.forEach((btn, index) => {
 
-    btn.addEventListener('click', e => {
+    this.addEventListenerALL(btn, "click drag mouseover", e => {
 
         console.log(btn.className.baseVal.replace("btn-", ""));
+
+});
+
+this.addEventListenerALL(btn, "mouseover mouseup mouse down", e => {
+
+ btn.style.cursor = "pointer";
+ 
 
 });
 
